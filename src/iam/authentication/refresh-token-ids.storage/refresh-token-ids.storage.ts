@@ -18,7 +18,7 @@ export class RefreshTokenIdsStorage
     // Instead of initializing the connection here.
     this.redisClient = new Redis({
       host: 'localhost', // NOTE: According to best practices, we should use the environment variables here instead
-      port: 6279,
+      port: 6379,
     });
   }
 
