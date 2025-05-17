@@ -14,12 +14,15 @@ import { ActiveUser } from '../iam/decorators/active-user.decorator';
 import { ActiveUserData } from '../iam/interfaces/active-user-data.interface';
 import { Roles } from '../iam/authorization/decorator/roles.decorator';
 import { Role } from '../users/enums/role.enums';
+import { Permissions } from '../iam/authorization/decorator/permissions.decorator';
+import { Permission } from '../iam/authorization/permission.type';
 
 @Controller('coffees')
 export class CoffeesController {
   constructor(private readonly coffeesService: CoffeesService) {}
 
-  @Roles(Role.Admin)
+  // @Roles(Role.Admin)
+  @Permissions(Permission.CreateCoffee)
   @Post()
   create(@Body() createCoffeeDto: CreateCoffeeDto) {
     return this.coffeesService.create(createCoffeeDto);
